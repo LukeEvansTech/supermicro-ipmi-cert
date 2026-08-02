@@ -1,0 +1,22 @@
+# Lint workflow for supermicro-ipmi-cert.
+# Thin caller of LukeEvansTech/shared-workflows super-linter reusable.
+# The pinned SHA below is shared-workflows' main at the time this was wired up;
+# bump it by hand when shared-workflows changes in a way this repo needs.
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
+  pull-requests: write
+
+jobs:
+  lint:
+    uses: LukeEvansTech/shared-workflows/.github/workflows/super-linter.yml@ceee688a491289ee740499ed6d2aec30cbef84ea # main 2026-08-01
+    with:
+      soft-launch: false
