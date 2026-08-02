@@ -1,0 +1,8 @@
+# Super-Linter reads this at .github/linters/.codespellrc.
+#
+# The Supermicro Redfish OEM cert endpoint returns fields with vendor typos
+# ("VaildFrom", "GoodTHRU") that the code and tests must reproduce verbatim
+# to talk to real firmware — codespell must not "fix" them.
+[codespell]
+ignore-words-list = vaild,thru
+skip = ./tests/fixtures/*,*/tests/fixtures/*

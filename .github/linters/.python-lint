@@ -1,0 +1,73 @@
+# Pylint config for supermicro-ipmi-cert. Read by super-linter
+# (PYTHON_PYLINT_CONFIG_FILE defaults to this path).
+[MASTER]
+# Let pylint resolve intra-repo imports (the tool is not installed as a package).
+init-hook='import sys; sys.path.insert(0, ".")'
+
+[FORMAT]
+# Match Black/Ruff-format (.github/linters/.python-black, .ruff.toml).
+max-line-length = 100
+
+[MESSAGES CONTROL]
+# Disabled with rationale (rules that are wrong or noisy for this codebase):
+#   C0103              invalid-name — setLogger and the Redfish field names
+#                      mirror the API this ported tool talks to, not Python
+#                      snake_case.
+#   C0114/C0115/C0116  missing module/class/function docstrings — pedantic
+#                      for pytest tests and small helpers.
+#   C0301              line-too-long — Black/Ruff-format are the sole
+#                      authority on code width.
+#   C0411              wrong-import-order — isort owns import ordering, and
+#                      its `profile = black` grouping intentionally disagrees
+#                      with pylint's own first/third-party classification
+#                      (pylint resolves supermicro_ipmi_cert as first-party
+#                      via init-hook; isort groups it with third-party).
+#   C0415              import-outside-toplevel — pyOpenSSL is imported lazily
+#                      inside the few helpers that need it; test files use
+#                      scoped imports for the same reason.
+#   E0401              import-error — super-linter's container doesn't
+#                      install requirements.txt, so third-party imports
+#                      (requests, OpenSSL, pytest) read as unresolvable
+#                      here. Real import checks happen in pytest CI.
+#   R0801              duplicate-code — copy-paste detection disabled
+#                      fleet-wide (JSCPD survey 2026-05-07 across the shared
+#                      config estate: 0 genuine refactor candidates).
+#   R0903              too-few-public-methods — test fakes/recorders are
+#                      deliberately minimal.
+#   R0911/R0912/R0914/R0915
+#                      too-many-{return-statements,branches,locals,statements}
+#                      — main() is a deliberately linear CLI flow ported
+#                      as-proven from the containers monorepo; splitting it
+#                      to satisfy counts would churn live-verified code.
+#   R0913/R0917        too-many-(positional-)arguments — the test Recorder
+#                      takes one knob per faked failure mode.
+#   R1722              consider-using-sys-exit — the ported tool uses the
+#                      exit() builtin throughout; behaviour-identical here
+#                      and left untouched to keep the move diff-free.
+#   W0621              redefined-outer-name — pytest fixtures are injected by
+#                      shadowing the fixture function's name; that is the
+#                      mechanism, not an accident.
+#   W0718              broad-exception-caught — deliberate: TLS probes and
+#                      Redfish calls against rebooting BMCs fail in many
+#                      exception shapes, and every handler converts to a
+#                      logged False/retry rather than a crash.
+disable =
+    C0103,
+    C0114,
+    C0115,
+    C0116,
+    C0301,
+    C0411,
+    C0415,
+    E0401,
+    R0801,
+    R0903,
+    R0911,
+    R0912,
+    R0913,
+    R0914,
+    R0915,
+    R0917,
+    R1722,
+    W0621,
+    W0718,
