@@ -35,3 +35,8 @@ bump there; consumers are only talos-cluster deploy Jobs.
 
 Lint is super-linter via shared-workflows (`soft-launch: false`); configs in
 `.github/linters/`. Run the real super-linter image locally before pushing.
+
+Docs are the estate zensical standard (`docs/` project → GitHub Pages at
+lukeevanstech.github.io/supermicro-ipmi-cert, drift-checked by
+docs-standard-check.yml). Keep `docs/requirements.txt` to the single
+`zensical==X.Y.Z` pin; Renovate bumps it.
