@@ -1,0 +1,47 @@
+[project]
+site_name = "supermicro-ipmi-cert"
+site_description = "Deploys Certwarden-issued TLS certificates to Supermicro BMCs via Redfish, verifying what the socket actually serves"
+site_author = "LukeEvansTech"
+site_url = "https://lukeevanstech.github.io/supermicro-ipmi-cert/"
+copyright = "Copyright &copy; 2026 LukeEvansTech"
+generator = false
+
+docs_dir = "docs"
+site_dir = "site"
+use_directory_urls = true
+dev_addr = "localhost:8000"
+
+# Repository integration
+repo_url = "https://github.com/LukeEvansTech/supermicro-ipmi-cert"
+repo_name = "supermicro-ipmi-cert"
+edit_uri = "edit/main/docs/docs"
+
+# Theme configuration
+[project.theme]
+name = "material"
+variant = "modern"
+language = "en"
+
+# Color schemes with automatic system preference detection
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "indigo"
+accent = "indigo"
+
+[project.theme.palette.toggle]
+icon = "material/brightness-7"
+name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "indigo"
+accent = "indigo"
+
+[project.theme.palette.toggle]
+icon = "material/brightness-4"
+name = "Switch to light mode"
+
+[markdown_extensions.pymdownx.superfences]
+custom_fences = [{ name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }]
