@@ -1,0 +1,19 @@
+# Canonical EditorConfig — managed by LukeEvansTech/shared-workflows
+# (templates/.editorconfig), propagated by scripts/rollout_zensical_standard.py.
+#
+# Intentionally minimal and scoped to *.sh. super-linter's SHELL_SHFMT defaults
+# to tab indentation, but the fleet's shell scripts are written with 2-space
+# indent (the established `shfmt -i 2` local convention). Without a pinned
+# .editorconfig, local `shfmt` and super-linter disagree and SHELL_SHFMT goes
+# red. Pinning indent here makes both agree on the convention the code already
+# uses, with no reformat churn.
+#
+# Kept to *.sh on purpose: super-linter also runs EDITORCONFIG
+# (editorconfig-checker), which enforces every rule here against matching files.
+# A broad [*] block (final-newline, trailing-whitespace, ...) would start
+# flagging unrelated files fleet-wide — so this stays surgical.
+root = true
+
+[*.sh]
+indent_style = space
+indent_size = 2
