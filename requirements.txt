@@ -1,2 +1,2 @@
-requests==2.33.0
-pyOpenSSL==26.0.0
+requests==2.34.2
+pyOpenSSL==26.4.0
