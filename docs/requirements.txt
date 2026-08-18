@@ -1,2 +1,2 @@
 # Zensical documentation generator
-zensical==0.0.54
+zensical==0.0.55
