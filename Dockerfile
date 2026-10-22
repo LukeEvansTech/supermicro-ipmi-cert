@@ -1,4 +1,4 @@
-FROM python:3.15-alpine@sha256:a58bff94159509f3a3f774da8c244001b74e0348139c421956abf991bfc9f1b8 AS builder
+FROM python:3.15-alpine@sha256:d44b1254cb92329418d164b22b20d86bbd3869d48e80e09e476531a409a728bb AS builder
 
 ARG KUBECTL_VERSION=v1.32.0
 ARG TARGETARCH=amd64
@@ -12,7 +12,7 @@ RUN wget -q -O kubectl "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/$
     chmod +x kubectl
 
 # Final runtime image
-FROM python:3.15-alpine@sha256:a58bff94159509f3a3f774da8c244001b74e0348139c421956abf991bfc9f1b8
+FROM python:3.15-alpine@sha256:d44b1254cb92329418d164b22b20d86bbd3869d48e80e09e476531a409a728bb
 
 LABEL org.opencontainers.image.source="https://github.com/LukeEvansTech/supermicro-ipmi-cert"
 LABEL org.opencontainers.image.description="Supermicro IPMI Certificate Deployment Tool for Cert Warden (Redfish/X12/X13/H13 only)"
