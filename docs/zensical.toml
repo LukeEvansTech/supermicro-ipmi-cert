@@ -4,7 +4,6 @@ site_description = "Deploys Certwarden-issued TLS certificates to Supermicro BMC
 site_author = "LukeEvansTech"
 site_url = "https://lukeevanstech.github.io/supermicro-ipmi-cert/"
 copyright = "Copyright &copy; 2026 LukeEvansTech"
-generator = false
 
 docs_dir = "docs"
 site_dir = "site"
@@ -42,3 +41,6 @@ accent = "indigo"
 [project.theme.palette.toggle]
 icon = "material/brightness-4"
 name = "Switch to light mode"
+
+[project.extra]
+generator = false
